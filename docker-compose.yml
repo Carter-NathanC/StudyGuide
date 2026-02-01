@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  neurostudy:
+    build: .
+    container_name: neurostudy_app
+    restart: unless-stopped
+    ports:
+      - "5105:80"
+    environment:
+      # --- HARDENING: API KEY INJECTION ---
+      # Do not paste the key here if committing to GitHub.
+      # Use an .env file or export the variable in your shell.
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
