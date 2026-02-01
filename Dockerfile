@@ -4,11 +4,11 @@ FROM node:18-alpine as builder
 WORKDIR /app
 
 # Copy package definition
-# (Note: In your local repo, you should have package.json from 'npm create vite@latest')
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+# CHANGED: 'npm ci' -> 'npm install' to fix the missing lockfile error
+RUN npm install
 
 # Copy source code
 COPY . .
